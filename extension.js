@@ -5,10 +5,10 @@ let editor; // Reference to the current active editor
 
 function activate(context) {
   // Define base styles for text color, opacity, range, and background color
-  let textColor = "#000000"; // Default text color
+  let textColor = "#000000ee"; // Default text color
   let opacity = "0.5"; // Default opacity for faded effect
   let bionicRange = 2; // Default bionic range (portion of word to highlight)
-  let bgColor = "#ffffff"; // Default background color
+  let bgColor = "#ffffff00"; // Default background color
 
   // Create decoration types based on the current styles
   let colorDecorationType = createDecorationType(textColor, bgColor);
@@ -206,94 +206,11 @@ function activate(context) {
 
   // Function to generate the HTML content for the WebView (styling form)
   function getWebviewContent() {
-    return `<!DOCTYPE html>
-          <html lang="en">
-          <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>My WebView</title>
-              <style>
-                  body {
-                      width: 100vw;
-                      height: 100vh;
-                      display: flex;
-                      justify-content: center;
-                  }
-                  form {
-                      width: 70%;
-                      height: 200px;
-                      border: 2px solid;
-                      border-radius: 10px;
-                      padding: 10px;
-                      margin: 20px;
-                      text-align: center;
-                  }
-                  #btn_box {
-                      border: none;
-                      padding: 0;
-                      margin: 0;
-                      margin-top: 10px;
-                      width: auto;
-                      height: auto;
-                  }
-                  button {
-                      width: 120px;
-                      border-radius: 6px;
-                      border: 1px solid;
-                      padding: 5px;
-                      font-weight: 600;
-                      letter-spacing: 1px;
-                  }
-                  input[type="color"] {
-                      width: 100px;
-                      height: 20px;
-                      border: none;
-                      padding: 0;
-                      margin: 0;
-                  }
-                  label {
-                      font-size: 1rem;
-                      font-weight: 600;
-                      display: block;
-                  }
-              </style>
-          </head>
-          <body>
-              <form>
-                  <label for="text_color">Text Color</label>
-                  <input id="text_color" name="text_color" type="color">
-                  <br>
-                  <label for="bg_color">Background Color</label>
-                  <input id="bg_color" name="bg_color" type="color">
-                  <br>
-                  <label for="bionic_range">Range of Word to Highlight</label>
-                  <input id="bionic_range" type="range" value="50" min="1" max="100">
-                  <br>
-                  <label for="opacity_s">Opacity of Second Part</label>
-                  <input id="opacity_s" name="opacity_s" type="range" min="0" max="1" step="0.1" value="0.5">
-                  <div id="btn_box">
-                      <button type="button" onclick="ApplyChange()">Apply</button>
-                      <button type="reset">Reset</button>
-                  </div>
-              </form>
-              <script>
-                  const vscode = acquireVsCodeApi();
-                  function ApplyChange() {
-                      const text_color = document.getElementById("text_color").value;
-                      const bg_color = document.getElementById("bg_color").value;
-                      const bionic_range = document.getElementById("bionic_range").value;
-                      const opacity_s = document.getElementById("opacity_s").value;
-                      vscode.postMessage({
-                          command: 'applyStyles',
-                          textColor: text_color,
-                          bgColor: bg_color,
-                          opacity: opacity_s,
-                          bionicRange: bionic_range
-                      });
-                  }
-              </script>
-          </body>
-          </html>`;
+    const path = require('path');
+    const fs = require('fs');
+    
+    const filepath = vscode.Uri.file(path.join(context.extensionPath, 'WebView.html'));
+    return fs.readFileSync(filepath.fsPath, 'utf-8');
   }
 
   // Register commands for toggling decorations and showing the WebView

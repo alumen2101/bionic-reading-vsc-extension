@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My WebView</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        form {
+            width: 70%;
+            height: 200px;
+            border: 2px solid;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        #btn_box {
+            border: none;
+            padding: 0;
+            margin: 0;
+            margin-top: 10px;
+            width: auto;
+            height: auto;
+        }
+
+        button {
+            width: 120px;
+            border-radius: 6px;
+            border: 1px solid;
+            padding: 5px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        input[type='color'] {
+            width: 100px;
+            height: 20px;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        label {
+            font-size: 1rem;
+            font-weight: 600;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <label for="text_color">Text Color</label>
+        <input id="text_color" name="text_color" type="color" />
+        <br />
+        <label for="bg_color">Background Color</label>
+        <input id="bg_color" name="bg_color" type="color" />
+        <br />
+        <label for="bionic_range">Range of Word to Highlight</label>
+        <input id="bionic_range" type="range" value="50" min="1" max="100" />
+        <br />
+        <label for="opacity_s">Opacity of Second Part</label>
+        <input id="opacity_s" name="opacity_s" type="range" min="0" max="1" step="0.1" value="0.5" />
+        <div id="btn_box">
+            <button type="button" onclick="ApplyChange()">Apply</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+    <script>
+        const vscode = acquireVsCodeApi()
+        function ApplyChange() {
+            const text_color = document.getElementById('text_color').value
+            const bg_color = document.getElementById('bg_color').value
+            const bionic_range = document.getElementById('bionic_range').value
+            const opacity_s = document.getElementById('opacity_s').value
+            vscode.postMessage({
+                command: 'applyStyles',
+                textColor: text_color,
+                bgColor: bg_color,
+                opacity: opacity_s,
+                bionicRange: bionic_range,
+            })
+        }
+    </script>
+</body>
+
+</html>
