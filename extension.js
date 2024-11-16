@@ -243,6 +243,9 @@ function activate(context) {
 function deactivate() {}
 
 module.exports = {
+  getWebviewContent,  
+  createFadedDecorationType,  
+  createDecorationType,
   activate,
   deactivate,
 };
