@@ -85,6 +85,15 @@ function activate(context) {
   // Function to toggle the active state of decorations
   function toggleDecorations() {
     decorationsActive = !decorationsActive; // Toggle the state of decorations
+    
+    // if decorationsActive is false, it will disable the effect
+    if (decorationsActive == false){
+      colorDecorationType.dispose();
+      fadedDecorationType.dispose();
+
+      colorDecorationType = createDecorationType(textColor, bgColor);
+        fadedDecorationType = createFadedDecorationType(opacity);
+    }
     applyDecorations(); // Reapply decorations based on the new state
 
     // Display a status message in the VS Code status bar
