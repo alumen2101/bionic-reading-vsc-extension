@@ -9,8 +9,8 @@
   },
   
   "activationEvents": [
-    
-
+    "onCommand:extension.showWebView",
+    "onCommand:extension.toggleDecorations"
   ],
   "categories": [
     "Other"
@@ -41,10 +41,7 @@
       }
     ]
   },
-  "activationEvents": [
-    "onCommand:extension.showWebView",
-    "onCommand:extension.toggleDecorations"
-  ],
+
 
   "scripts": {
     "lint": "eslint .",
