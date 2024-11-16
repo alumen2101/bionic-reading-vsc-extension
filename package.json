@@ -5,8 +5,9 @@
   "version": "0.0.1",
   "publisher": "your-publisher-name",
   "engines": {
-    "vscode": "^1.94.0"
+  "vscode": "^1.94.0"  
   },
+  
   "activationEvents": [
     "onCommand:extension.showWebView",
     "onCommand:extension.toggleDecorations"
@@ -15,7 +16,8 @@
     "Other"
   ],
   "main": "./extension.js",
-  "contributes": {
+
+    "contributes": {
     "commands": [
       {
         "command": "extension.showWebView",
@@ -29,7 +31,7 @@
     "keybindings": [
       {
         "command": "extension.toggleDecorations",
-        "key": "ctrl+b",
+        "key": "ctrl+b", 
         "when": "editorTextFocus"
       },
       {
@@ -39,17 +41,19 @@
       }
     ]
   },
+
+
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "vscode-test"
   },
   "devDependencies": {
+    "@types/vscode": "^1.94.0",
     "@types/mocha": "^10.0.8",
     "@types/node": "20.x",
-    "@types/vscode": "^1.94.0",
+    "eslint": "^9.11.1",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1",
-    "eslint": "^9.11.1"
+    "@vscode/test-electron": "^2.4.1"
   }
 }

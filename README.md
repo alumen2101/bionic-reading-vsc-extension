@@ -1,65 +1,64 @@
-# boulder-text README
+# VS Code Text Decorations Extension
 
-This is the README for your extension "boulder-text". After writing up a brief description, we recommend including the following sections.
+This is a Visual Studio Code extension for applying text decorations with customizable styles, such as bold text, faded effects, and background colors. It is designed to work with different file types, including plain text and code files, and provides an interactive settings interface via a WebView.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Text Highlighting**: Apply bold and faded decorations to specific portions of text.
+- **Customizable Styles**: Change text color, background color, opacity, and the range of word highlighting.
+- **Dynamic File Handling**:
+  - Highlight words in `.txt` and `README` files.
+  - Highlight comments in code files (JavaScript, Python, HTML, etc.).
+- **Interactive Settings Panel**: Adjust styles using a WebView interface.
+- **Toggle Decorations**: Enable or disable decorations on demand.
+- **Language-Aware Comment Detection**: Automatically detects and applies styles to comments based on the programming language.
 
-For example if there is an image subfolder under your extension project workspace:
+## Installation
 
-\!\[feature X\]\(images/feature-x.png\)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
-## Requirements
+## Usage
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+1. **Activate the extension**:
+   - Open a `.txt`, `README`, or supported code file in the editor.
+   - Run the command `Toggle Decorations` from the Command Palette (`Ctrl+P`).
+   - Run the command `Show WebView` from the Command Palette (`Ctrl+Shift+P`).
 
-## Extension Settings
+2. **Customize styles**:
+   - Run the `Show WebView` command from the Command Palette to open the settings panel.
+   - Adjust the styles (text color, background color, opacity, and range) and apply changes.
+   - View changes dynamically as you edit the document.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Commands
 
-For example:
+| Command           | Description                                     |
+|-------------------|-------------------------------------------------|
+| `Toggle Decorations` | Enable or disable text decorations in the active editor. (`Ctrl+P`)|
+| `Show WebView`       | Open the WebView interface to customize styles.(`Ctrl+Shift+P`)          |
 
-This extension contributes the following settings:
+## Supported File Types
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+- **Plain Text**: `.txt`, `README`.
+- **Programming Languages**: JavaScript, TypeScript, Python, C, C++, Java, HTML, CSS, PHP, Go, and more.
 
-## Known Issues
+## Development Notes
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+### Decoration Logic
+- `applyDecorations`: Applies decorations dynamically based on file type.
+- `guessFileType`: Identifies the file type and retrieves the relevant comment ranges.
 
-## Release Notes
+### Customization
+- The WebView allows real-time adjustments of decoration styles.
+- User input is processed through the `handleWebViewInput` function.
 
-Users appreciate release notes as you update your extension.
+## Example
 
-### 1.0.0
 
-Initial release of ...
 
-### 1.0.1
+## Contributing
 
-Fixed issue #.
+Feel free to submit issues and pull requests for feature enhancements, bug fixes, or suggestions.
 
-### 1.1.0
+## License
 
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
