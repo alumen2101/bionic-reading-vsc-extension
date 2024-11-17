@@ -1,55 +1,47 @@
 {
-  "name": "boulder-text",
-  "displayName": "Sidebar Input Example",
-  "description": "An example extension with a sidebar for input.",
+  "name": "bionic-reading-vsc-extension",
+  "displayName": "bionic-reading-vsc-extension",
+  "description": "",
   "version": "0.0.1",
-  "publisher": "your-publisher-name",
   "engines": {
-    "vscode": "^1.94.0"
+    "vscode": "^1.95.0"
   },
-  "activationEvents": [
-    "onCommand:extension.showWebView",
-    "onCommand:extension.toggleDecorations"
-  ],
   "categories": [
     "Other"
   ],
-  "main": "./extension.js",
+  "activationEvents": [],
+  "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "extension.showWebView",
-        "title": "Show WebView"
-      },
-      {
-        "command": "extension.toggleDecorations",
-        "title": "Toggle Decorations"
-      }
-    ],
-    "keybindings": [
-      {
-        "command": "extension.toggleDecorations",
-        "key": "ctrl+b",
-        "when": "editorTextFocus"
-      },
-      {
-        "command": "extension.showWebView",
-        "key": "ctrl+shift+b",
-        "when": "editorTextFocus"
+        "command": "bionic-reading-vsc-extension.helloWorld",
+        "title": "Hello World"
       }
     ]
   },
   "scripts": {
-    "lint": "eslint .",
-    "pretest": "npm run lint",
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src",
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/mocha": "^10.0.8",
+    "@types/vscode": "^1.95.0",
+    "@types/mocha": "^10.0.9",
     "@types/node": "20.x",
-    "@types/vscode": "^1.94.0",
+    "@typescript-eslint/eslint-plugin": "^8.10.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "eslint": "^9.13.0",
+    "typescript": "^5.6.3",
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1",
-    "eslint": "^9.11.1"
+    "@vscode/test-electron": "^2.4.1"
   }
 }
