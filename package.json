@@ -9,14 +9,31 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+  ],
   "main": "./dist/extension.js",
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "bionic-sidebar-view",
+          "title": "Bionic",
+          "icon": "assets/sidebarIcon.svg"
+        }
+      ]
+    },
+    "views": {
+      "bionic-sidebar-view": [
+        {
+          "type": "webview",
+          "id": "bionic-sidebar",
+          "name": "Bionic",
+          "icon": "assets/sidebarIcon.svg",
+          "contextualTitle": "Bionic"
+        }
+      ]
+    },
     "commands": [
-      {
-        "command": "bionic-reading-vsc-extension.helloWorld",
-        "title": "Hello World"
-      }
     ]
   },
   "scripts": {

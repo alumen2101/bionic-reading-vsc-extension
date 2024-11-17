@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: var(--vscode-editor-background);
+            color: var(--vscode-editor-foreground);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type='color'] {
+            width: 70%;
+            height: 30px;
+            border: none;
+            padding: 0;
+            margin-bottom: 5px;
+        }
+
+        button {
+            margin: 10px 10px;
+
+        }
+
+        .range-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .range-container input[type='range'] {
+            flex-grow: 1;
+        }
+
+        .range-value {
+            min-width: 30px;
+            text-align: right;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="">
+            <div>
+                <label for="TextColorPicker">Text Color</label>
+                <input type="color" id="TextColorPicker" value="#ff0000" />
+            </div>
+
+            <div>
+                <label for="BgColorPicker">Background Color</label>
+                <input type="color" id="BgColorPicker" value="#00ff00" />
+            </div>
+
+            <div>
+                <label for="frequnecyRangeSelector">Frequency</label>
+                <div class="range-container">
+                    <input type="range" id="frequnecyRangeSelector" min="0" max="100" value="50" />
+                    <span id="frequnecyRangeSelectorValue" class="range-value">50</span>
+                </div>
+            </div>
+
+            <div>
+                <label for="opacityRangeSelector">Opaicity</label>
+                <div class="range-container">
+                    <input type="range" id="opacityRangeSelector" min="0" max="100" value="40" />
+                    <span id="opacityRangeSelectorValue" class="range-value">40</span>
+                </div>
+            </div>
+            <div>
+                <button onclick="Apply()">apply</button>
+                <button onclick="Reset()">reset</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const frequnecyRangeSelector = document.getElementById('frequnecyRangeSelector')
+        const frequencyRangeSelectorValue = document.getElementById('frequencyRangeSelectorValue')
+
+        const opacityRangeSelector = document.getElementById('opacityRangeSelector')
+        const opacityRangeSelectorValue = document.getElementById('opacityRangeSelectorValue')
+
+        frequnecyRangeSelector.addEventListener('input', () => {
+            frequencyRangeSelectorValue.textContent = frequnecyRangeSelector.value
+        })
+
+        opacityRangeSelector.addEventListener('input', () => {
+            opacityRangeSelectorValue.textContent = opacityRangeSelector.value
+        })
+
+        const vscode = acquireVsCodeApi()
+
+        const Apply = () => {
+            const textColor = document.getElementById('TextColorPicker').value;
+            const bgColor = document.getElementById('BgColorPicker').value;
+            const frequency = document.getElementById('frequnecyRangeSelector').value;
+            const opacity = document.getElementById('opacityRangeSelector').value;
+            vscode.postMessage({
+                // TODO: set the command
+                command: '',
+                textColor: textColor,
+                bgColor: bgColor,
+                opacity: opacity,
+                frequency: frequency,
+            });
+        }
+
+        const Reset = () => {
+            vscode.postMessage({
+                // TODO: set the command
+                command: '',
+                textColor: false,
+                bgColor: false,
+                opacity: "0.5",
+                frequency: 50,
+            });
+        }
+    </script>
+</body>
+
+</html>
