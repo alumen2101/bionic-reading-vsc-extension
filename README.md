@@ -16,16 +16,14 @@ This is a Visual Studio Code extension for applying text decorations with custom
 ## Installation
 
 Installation: Search for "Bionic Effect" in the Extensions view (Ctrl + Shift + X) and click "Install."
-Usage: Open the txt file or a file which contains comments you want, then run (Ctrl + b) command
-to start the effect, and run (Ctrl + Shift + b) to customize it.
 
 
 ## Usage
 
 1. **Activate the extension**:
    - Open a `.txt`, `README`, or supported code file in the editor.
-   - Run the command `Toggle Decorations` from the Command Palette (`Ctrl+P`).
-   - Run the command `Show WebView` from the Command Palette (`Ctrl+Shift+P`).
+   - Run the command `Toggle Decorations` from the Command Palette (`Ctrl+B`).
+   - Run the command `Show WebView` from the Command Palette (`Ctrl+Shift+B`).
 
 2. **Customize styles**:
    - Run the `Show WebView` command from the Command Palette to open the settings panel.
@@ -36,8 +34,8 @@ to start the effect, and run (Ctrl + Shift + b) to customize it.
 
 | Command           | Description                                     |
 |-------------------|-------------------------------------------------|
-| `Toggle Decorations` | Enable or disable text decorations in the active editor. (`Ctrl+P`)|
-| `Show WebView`       | Open the WebView interface to customize styles.(`Ctrl+Shift+P`)          |
+| `Toggle Decorations` | Enable or disable text decorations in the active editor. (`Ctrl+B`)|
+| `Show WebView`       | Open the WebView interface to customize styles.(`Ctrl+Shift+B`)          |
 
 ## Supported File Types
 
